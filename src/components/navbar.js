@@ -1,18 +1,45 @@
 import Hamburger from "hamburger-react";
-import { Row, Col } from "react-bootstrap";
+import { Col } from "react-bootstrap";
 import "./navbar.css";
+import logo from "../assets/images/logo.png";
 export function NavigationBar({
 	isSideDrawerOpen,
 	setShowSideDrawer,
 	...props
 }) {
 	return (
-		<Row className="justify-content-between align-items-center py-3">
-			<Col md={"1"} sm={"6"} xs={6} className="brand unselectable">
-				Sre Printograph
+		<div
+			style={{
+				position: "fixed",
+				display: "flex",
+				flexDirection: "row",
+				width: "100%",
+				zIndex: 2000,
+			}}
+			className="svg-bg justify-content-between align-items-start py-3">
+			<Col
+				md={"1"}
+				sm={"6"}
+				xs={6}
+				style={{ paddingLeft: "30px" }}
+				className="brand unselectable pointer">
+				<div>
+					<img
+						src={logo}
+						style={{
+							height: "75px",
+							position: "relative",
+							left: "10px",
+						}}
+						alt="Sre Printograph Brand Logo"
+					/>
+				</div>
+				<span>SRE PRINTOGRAPH</span>
 			</Col>
 			<Col md={"1"} sm={"6"} xs={6} className="align-items-center">
-				<span className="hide-when-big">
+				<span
+					style={{ paddingRight: "50px" }}
+					className="hide-when-big">
 					<Hamburger
 						toggled={isSideDrawerOpen}
 						toggle={isSideDrawerOpen}
@@ -37,11 +64,11 @@ export function NavigationBar({
 			</Col>
 
 			<Col md={"2"}>
-				<div className="cta hide-when-small unselectable">
+				<button className="cta shimmerable hide-when-small unselectable">
 					Request a Quote
-				</div>
+				</button>
 			</Col>
-		</Row>
+		</div>
 	);
 }
 
